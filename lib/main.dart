@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodcorner/Home.dart';
+import 'package:foodcorner/color/colors.dart';
 import 'package:foodcorner/slashScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: scaffoldBackgroundColor
       ),
       home: const Home(),
     );
