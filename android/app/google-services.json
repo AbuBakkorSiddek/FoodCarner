@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "211904602518",
+    "project_id": "foodcorner-8eb00",
+    "storage_bucket": "foodcorner-8eb00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211904602518:android:89ad68dd08d816406a3db7",
+        "android_client_info": {
+          "package_name": "com.example.foodcorner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211904602518-htdkatmb7vjvb23m3ojpqps077381njv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodcorner",
+            "certificate_hash": "458125b5d5dda3d84a852a8a5b4c94fb2ef31d46"
+          }
+        },
+        {
+          "client_id": "211904602518-o0pfql6p1jp4lnt1gognmd05n2llbkr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5duXPWbuR6CECqfJpk3uviNwUWFSv51E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211904602518-o0pfql6p1jp4lnt1gognmd05n2llbkr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
