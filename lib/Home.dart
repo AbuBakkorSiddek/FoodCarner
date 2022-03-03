@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:foodcorner/Providers/productProvider.dart';
 import 'package:foodcorner/Review/ReviewCart.dart';
 import 'package:foodcorner/Search/Search.dart';
 import 'package:foodcorner/color/colors.dart';
 import 'package:foodcorner/productDetails.dart';
 import 'package:foodcorner/widget/singleProduct.dart';
-
+import 'package:provider/provider.dart';
 import 'myProfile/profile.dart';
 
 class Home extends StatefulWidget {
@@ -16,6 +17,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  late ProductProvider productProvider;
+
   Widget listTile(
       {required IconData iconData,
       required String titletext,
@@ -33,8 +37,22 @@ class _HomeState extends State<Home> {
     );
   }
 
+
+  @override
+  void initState() {
+
+   productProvider=Provider.of(context,listen: false);
+    productProvider.fatchHerbusProductData();
+
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+    productProvider=Provider.of(context);
+
     return Scaffold(
       drawer: Drawer(
           child: Container(
@@ -298,14 +316,13 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Akand leaves',
-                                    productImage:
-                                        'https://static-ai.asianetnews.com/images/01dz31myw9afh5dt2vtm36rz8s/untitled---2020-01-21t084230-004-jpg_1200x900xt.jpg',
-                                  )));
+                                  productText: 'Fresh Mnit',
+                                  productImage:
+                                      "https://www.freepnglogos.com/uploads/mint-png/mint-png-images-are-download-crazypngm-10.png")));
                     },
                     productImage:
-                        'https://static-ai.asianetnews.com/images/01dz31myw9afh5dt2vtm36rz8s/untitled---2020-01-21t084230-004-jpg_1200x900xt.jpg',
-                    productText: 'Akand leaves',
+                        "https://www.freepnglogos.com/uploads/mint-png/mint-png-images-are-download-crazypngm-10.png",
+                    productText: 'Fresh Mnit',
                   ),
                   singelProduct(
                     onTap: () {
@@ -313,33 +330,111 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Basil',
-                                    productImage:
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuyqhLZJ8-j8S2gc5F6pcekFuyFWpvd2Zgw&usqp=CAU',
-                                  )));
+                                  productText: 'Rose Merry',
+                                  productImage:
+                                      "http://assets.stickpng.com/thumbs/58bf1e41e443f41d77c734ae.png")));
                     },
                     productImage:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuyqhLZJ8-j8S2gc5F6pcekFuyFWpvd2Zgw&usqp=CAU',
-                    productText: 'Fresh Basil',
+                      "http://assets.stickpng.com/thumbs/58bf1e41e443f41d77c734ae.png",
+                    productText: 'Rose Merry',
                   ),
+
                   singelProduct(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Basil',
-                                    productImage:
-                                        'https://janatarsylhet24.com/wp-content/uploads/2020/08/pathorkuchi-230643.jpg',
-                                  )));
+                                  productText: 'Thyme',
+                                  productImage:
+                                  "http://assets.stickpng.com/thumbs/58bf1e33e443f41d77c734ac.png")));
                     },
                     productImage:
-                        'https://janatarsylhet24.com/wp-content/uploads/2020/08/pathorkuchi-230643.jpg',
-                    productText: 'Fresh Basil',
+                    "http://assets.stickpng.com/thumbs/58bf1e33e443f41d77c734ac.png",
+                    productText: 'Thyme',
                   ),
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                  productText: 'Sage',
+                                  productImage:
+                                  "http://assets.stickpng.com/thumbs/58bf1e48e443f41d77c734af.png")));
+                    },
+                    productImage:
+                    "http://assets.stickpng.com/thumbs/58bf1e48e443f41d77c734af.png",
+                    productText: 'Sage',
+                  ),
+
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                  productText: 'Lovage',
+                                  productImage:
+                                  "http://assets.stickpng.com/thumbs/58bf1e6ce443f41d77c734b3.png")));
+                    },
+                    productImage:
+                    "http://assets.stickpng.com/thumbs/58bf1e6ce443f41d77c734b3.png",
+                    productText: 'Lovage',
+                  ),
+
+
+
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                  productText: 'Oregano',
+                                  productImage:
+                                  "http://assets.stickpng.com/thumbs/58bf1e57e443f41d77c734b1.png")));
+                    },
+                    productImage:
+                    "http://assets.stickpng.com/thumbs/58bf1e57e443f41d77c734b1.png",
+                    productText: 'Oregano',
+                  ),
+
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                  productText: 'Bay Leaf',
+                                  productImage:
+                                  "http://assets.stickpng.com/thumbs/58bf1ea3e443f41d77c734b9.png")));
+                    },
+                    productImage:
+                    "http://assets.stickpng.com/thumbs/58bf1ea3e443f41d77c734b9.png",
+                    productText: 'Bay Leaf',
+                  ),
+
+
                 ],
               ),
             ),
+
+
+
+            // 'Fresh Fruits',
+
             SizedBox(
               height: 10,
             ),
@@ -369,14 +464,14 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Green Apple',
+                                    productText: 'Passion Fruit',
                                     productImage:
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpMqaUDGM1n8h8zJbrgpW7Ti7U8dI4-Df8gg&usqp=CAU',
+                                        'http://assets.stickpng.com/thumbs/5a60afe4eace967f8e026a18.png',
                                   )));
                     },
                     productImage:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpMqaUDGM1n8h8zJbrgpW7Ti7U8dI4-Df8gg&usqp=CAU',
-                    productText: 'Green Apple',
+                        'http://assets.stickpng.com/thumbs/5a60afe4eace967f8e026a18.png',
+                    productText: 'Passion Fruit',
                   ),
                   singelProduct(
                     onTap: () {
@@ -384,14 +479,14 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Orange',
+                                    productText: 'Sliced Dragon Fruit',
                                     productImage:
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQd6SxTP2sg_NR8UXrUVOAMbAjgl6qG4UfaRfE7unygI5OQFIKq4QO7iyyqs5UDf7werY&usqp=CAU',
+                                        'http://assets.stickpng.com/thumbs/5a5f62a2ee40df432bfac559.png',
                                   )));
                     },
                     productImage:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQd6SxTP2sg_NR8UXrUVOAMbAjgl6qG4UfaRfE7unygI5OQFIKq4QO7iyyqs5UDf7werY&usqp=CAU',
-                    productText: 'Fresh Orange',
+                        'http://assets.stickpng.com/thumbs/5a5f62a2ee40df432bfac559.png',
+                    productText: 'Sliced Dragon Fruit',
                   ),
                   singelProduct(
                     onTap: () {
@@ -399,18 +494,152 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Basil',
+                                    productText: 'Fresh Lychee Fruit',
                                     productImage:
-                                        'http://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png',
+                                        'http://assets.stickpng.com/thumbs/5a5f615dee40df432bfac53b.png',
                                   )));
                     },
                     productImage:
-                        'http://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png',
-                    productText: 'Fresh Basil',
+                        'http://assets.stickpng.com/thumbs/5a5f615dee40df432bfac53b.png',
+                    productText: 'Fresh Lychee Fruit',
                   ),
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Whole Santol Fruit',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5a5f638dee40df432bfac56d.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5a5f638dee40df432bfac56d.png',
+                    productText: 'Whole Santol Fruit',
+                  ),
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Fresh Kumquat',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5a5f614bee40df432bfac539.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5a5f614bee40df432bfac539.png',
+                    productText: 'Fresh Kumquat',
+                  ),
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Whole Bread Fruit',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5a5f6335ee40df432bfac566.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5a5f6335ee40df432bfac566.png',
+                    productText: 'Whole Bread Fruit',
+                  ),
+
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Whole Kaki Fruit',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5a60b066eace967f8e026a21.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5a60b066eace967f8e026a21.png',
+                    productText: 'Whole Kaki Fruit',
+                  ),
+
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Water Apple',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5a5f632aee40df432bfac565.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5a5f632aee40df432bfac565.png',
+                    productText: 'Water Apple',
+                  ),
+
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Large Jackfruit',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5a5f61f8ee40df432bfac54a.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5a5f61f8ee40df432bfac54a.png',
+                    productText: 'Large Jackfruit',
+                  ),
+
+
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Durian',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5a5f6131ee40df432bfac536.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5a5f6131ee40df432bfac536.png',
+                    productText: 'Durian',
+                  ),
+
+
                 ],
               ),
             ),
+
+
+            // 'Vegitabel',
+
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
                 'Vegitabel',
@@ -434,14 +663,14 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Green Cabbage',
+                                    productText: 'Celeriac',
                                     productImage:
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeJTsj5XObl3ZiK0-eg937nOFg-53cy7edmm1HyKbTvplLEtNDUcqr6_8Z-d6lnqkWs8o&usqp=CAU',
+                                        'http://assets.stickpng.com/thumbs/585ea843cb11b227491c3547.png',
                                   )));
                     },
                     productImage:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeJTsj5XObl3ZiK0-eg937nOFg-53cy7edmm1HyKbTvplLEtNDUcqr6_8Z-d6lnqkWs8o&usqp=CAU',
-                    productText: 'Green Cabbage',
+                        'http://assets.stickpng.com/thumbs/585ea843cb11b227491c3547.png',
+                    productText: 'Celeriac',
                   ),
                   singelProduct(
                     onTap: () {
@@ -449,36 +678,150 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Green Leaves',
+                                    productText: 'Bitter Melon',
                                     productImage:
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpKtSoCKcF7CBDFiFSdHCgHhdHTzabEiYVYg&usqp=CAU',
+                                        'http://assets.stickpng.com/thumbs/5ae22eb633b73fa43b1a894c.png',
                                   )));
                     },
                     productImage:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpKtSoCKcF7CBDFiFSdHCgHhdHTzabEiYVYg&usqp=CAU',
-                    productText: 'Green Leaves',
+                        'http://assets.stickpng.com/thumbs/5ae22eb633b73fa43b1a894c.png',
+                    productText: 'Bitter Melon',
                   ),
+
+
                   singelProduct(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Basil',
+                                    productText: 'Zucchini',
                                     productImage:
-                                        'http://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png',
+                                        'http://assets.stickpng.com/thumbs/585ea830cb11b227491c3544.png',
                                   )));
                     },
                     productImage:
-                        'http://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png',
-                    productText: 'Fresh Basil',
+                        'http://assets.stickpng.com/thumbs/585ea830cb11b227491c3544.png',
+                    productText: 'Zucchini',
                   ),
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Buk Choy',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5ae22ecc33b73fa43b1a894e.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5ae22ecc33b73fa43b1a894e.png',
+                    productText: 'Buk Choy',
+                  ),
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Romanesco Broccoli',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5ae22f4833b73fa43b1a8957.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5ae22f4833b73fa43b1a8957.png',
+                    productText: 'Romanesco Broccoli',
+                  ),
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Spinach',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/585ea80acb11b227491c353e.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/585ea80acb11b227491c353e.png',
+                    productText: 'Spinach',
+                  ),
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Radishes',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/585ea83dcb11b227491c3546.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/585ea83dcb11b227491c3546.png',
+                    productText: 'Radishes',
+                  ),
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Asparagus',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/585ea851cb11b227491c3549.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/585ea851cb11b227491c3549.png',
+                    productText: 'Asparagus',
+                  ),
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'En Choy',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5ae22ef033b73fa43b1a8951.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5ae22ef033b73fa43b1a8951.png',
+                    productText: 'En Choy',
+                  ),
+
+
                 ],
               ),
             ),
+
+
+            // 'Cambo Pack',
+
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
-                'Cambo Pack',
+                'Oil',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
@@ -499,45 +842,104 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Basil',
+                                    productText: 'Lavender Oil',
                                     productImage:
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq7DdxpzQb8L7ORQzkod8okKO_ttzAm34MxQ&usqp=CAU',
+                                        'http://assets.stickpng.com/thumbs/596cdf07ed07ad6118f998e1.png',
                                   )));
                     },
                     productImage:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq7DdxpzQb8L7ORQzkod8okKO_ttzAm34MxQ&usqp=CAU',
-                    productText: 'Fruits',
+                        'http://assets.stickpng.com/thumbs/596cdf07ed07ad6118f998e1.png',
+                    productText: 'Lavender Oil',
                   ),
+
+
+
                   singelProduct(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Basil',
+                                    productText: 'White Truffle Oil',
                                     productImage:
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcdsrZjvIRtP-nQHA4ykoKmkRY09CmBI-BDg&usqp=CAU',
+                                        'http://assets.stickpng.com/thumbs/5c091ef22c6641059597e3b7.png',
                                   )));
                     },
                     productImage:
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcdsrZjvIRtP-nQHA4ykoKmkRY09CmBI-BDg&usqp=CAU',
-                    productText: 'Fresh Basil',
+                        'http://assets.stickpng.com/thumbs/5c091ef22c6641059597e3b7.png',
+                    productText: 'White Truffle Oil',
                   ),
+
+
                   singelProduct(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: 'Fresh Basil',
+                                    productText: 'Black Truffle Oil',
                                     productImage:
-                                        'http://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png',
+                                        'http://assets.stickpng.com/thumbs/5c091e2b2c6641059597e3a4.png',
                                   )));
                     },
                     productImage:
-                        'http://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png',
-                    productText: 'Fresh Basil',
+                        'http://assets.stickpng.com/thumbs/5c091e2b2c6641059597e3a4.png',
+                    productText: 'Black Truffle Oil',
                   ),
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Peppermint Oil',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/5c8b79decdad6d02b006e4b4.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/5c8b79decdad6d02b006e4b4.png',
+                    productText: 'Peppermint Oil',
+                  ),
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Royal Oils Lavender',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/596cdfb3ed07ad6118f998e7.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/596cdfb3ed07ad6118f998e7.png',
+                    productText: 'Royal Oils Lavender',
+                  ),
+
+
+
+                  singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                productText: 'Young Living Oil',
+                                productImage:
+                                'http://assets.stickpng.com/thumbs/596cdf1aed07ad6118f998e2.png',
+                              )));
+                    },
+                    productImage:
+                    'http://assets.stickpng.com/thumbs/596cdf1aed07ad6118f998e2.png',
+                    productText: 'Young Living Oil',
+                  ),
+
+
                 ],
               ),
             ),

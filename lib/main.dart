@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:foodcorner/Home.dart';
+import 'package:foodcorner/Providers/productProvider.dart';
 import 'package:foodcorner/color/colors.dart';
 import 'package:foodcorner/slashScreen.dart';
+import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -16,14 +18,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider<ProductProvider>(
+      create: (context)=>ProductProvider(),
+      child: MaterialApp(
 
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: primaryColor,
-        scaffoldBackgroundColor: scaffoldBackgroundColor
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: primaryColor,
+          scaffoldBackgroundColor: scaffoldBackgroundColor
+        ),
+        home: const Home(),
       ),
-      home: const Home(),
     );
   }
 }
