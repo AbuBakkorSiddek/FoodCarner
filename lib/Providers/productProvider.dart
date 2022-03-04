@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class ProductProvider with ChangeNotifier {
-  List<ProductModel> HerbsProductList = [];
+  List<ProductModel> herbsProductList = [];
   late ProductModel productModel;
 
   fatchHerbusProductData() async {
@@ -19,23 +19,23 @@ class ProductProvider with ChangeNotifier {
 
       productModel =
           ProductModel(
-              ProductImage: element.get('productImage'),
+              productImage: element.get('productImage'),
               productName: element.get('productName'),
-            ProductPrice: element.get('productPrice')
+              productPrice: element.get('productPrice'),
           
           );
       
       newList.add(productModel);
       
-    }
+    },
     );
 
-    HerbsProductList=newList;
+    herbsProductList=newList;
     notifyListeners();
 
   }
 
  List<ProductModel> get getHerbsProductDetailsList{
-    return HerbsProductList;
+    return herbsProductList;
   }
 }

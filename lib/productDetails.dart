@@ -7,9 +7,10 @@ class ProductDetails extends StatefulWidget {
 
   final String productText;
   final String productImage;
+  final int productPrice;
 
 
-  ProductDetails({Key? key, required this.productText, required this.productImage}) : super(key: key);
+  ProductDetails({Key? key, required this.productText, required this.productImage, required this.productPrice}) : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -116,7 +117,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           height: 10,
                         ),
                         Text(
-                          '\ 50Tak',
+                          '\ ${widget.productPrice}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 25),
                         ),

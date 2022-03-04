@@ -4,10 +4,11 @@ class singelProduct extends StatelessWidget {
 
   final String productText;
   final String productImage;
+  final int productPrice;
   final Function() onTap;
 
   const singelProduct({
-    Key? key, required this.productText, required this.productImage, required this.onTap,
+    Key? key, required this.productText, required this.productImage, required this.onTap, required this.productPrice,
   }) : super(key: key);
 
   @override
@@ -42,7 +43,7 @@ class singelProduct extends StatelessWidget {
                   ),
                   SizedBox(height: 5,),
                   Text(
-                    '50 TK / 50 Gram',
+                    '${productPrice}TK / 50 Gram',
                   ),
                   SizedBox(
                     height: 5,
