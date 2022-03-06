@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:foodcorner/Home.dart';
+import 'package:foodcorner/Providers/userProvider.dart';
 import 'package:foodcorner/auth/singIn.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
 class EmailOrGmail extends StatefulWidget {
   const EmailOrGmail({Key? key}) : super(key: key);
@@ -13,6 +15,11 @@ class EmailOrGmail extends StatefulWidget {
 }
 
 class _EmailOrGmailState extends State<EmailOrGmail> {
+
+
+  late UserProvider userProvider;
+
+
   _googleSignUp() async {
     try {
       final GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -30,7 +37,9 @@ class _EmailOrGmailState extends State<EmailOrGmail> {
       );
 
       final User? user = (await _auth.signInWithCredential(credential)).user;
-      // print("signed in " + user.displayName);
+
+//store Data firestore
+      userProvider.addUserData(currentUser: user, userName:user?.displayName, userEmail: user?.email, userImage: user?.photoURL);
 
       return user;
     } catch (e) {}
@@ -38,6 +47,9 @@ class _EmailOrGmailState extends State<EmailOrGmail> {
 
   @override
   Widget build(BuildContext context) {
+
+    userProvider=Provider.of(context);
+
     return Scaffold(
         body: Container(
       width: double.infinity,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodcorner/Home.dart';
 import 'package:foodcorner/Providers/productProvider.dart';
+import 'package:foodcorner/Providers/userProvider.dart';
 import 'package:foodcorner/color/colors.dart';
 import 'package:foodcorner/slashScreen.dart';
 import 'package:provider/provider.dart';
@@ -18,18 +18,30 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ProductProvider>(
-      create: (context)=>ProductProvider(),
-      child: MaterialApp(
+    return MultiProvider(
 
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: primaryColor,
-          scaffoldBackgroundColor: scaffoldBackgroundColor
+        providers: [
+
+    ChangeNotifierProvider<ProductProvider>(
+    create: (context)=>ProductProvider(),),
+
+    ChangeNotifierProvider<UserProvider>(
+    create: (context)=>UserProvider(),),
+
+        ],
+        child: MaterialApp(
+
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              primaryColor: primaryColor,
+              scaffoldBackgroundColor: scaffoldBackgroundColor
+          ),
+          home: const SlashScreen(),
         ),
-        home: const Home(),
-      ),
+
     );
+
   }
 }
+
 

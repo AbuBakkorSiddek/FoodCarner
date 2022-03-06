@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SingleItem extends StatelessWidget {
+  final String productImage;
+  final String productName;
+  final int productPrice;
   bool isBool = false;
   SingleItem({
     Key? key,
     required this.isBool,
+    required this.productImage,
+    required this.productName,
+    required this.productPrice,
   }) : super(key: key);
 
   @override
@@ -20,7 +26,7 @@ class SingleItem extends StatelessWidget {
                 height: 100,
                 child: Center(
                   child: Image.network(
-                      'http://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png'),
+                     productImage),
                 ),
               )),
               Expanded(
@@ -38,11 +44,11 @@ class SingleItem extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          'ProductName',
-                          style:
-                              TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                          productName,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        Text('50 Taka/50 Gram',
+                        Text('$productPrice/ Taka',
                             style: TextStyle(color: Colors.grey, fontSize: 15))
                       ],
                     ),
@@ -56,13 +62,15 @@ class SingleItem extends StatelessWidget {
                             height: 35,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
-                                border: Border.all(color: Colors.grey, width: 2)),
+                                border:
+                                    Border.all(color: Colors.grey, width: 2)),
                             child: Row(
                               children: [
                                 Expanded(
                                   child: Text(
                                     '50 Gram',
-                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Center(
@@ -106,33 +114,43 @@ class SingleItem extends StatelessWidget {
                             Icons.delete,
                             size: 30,
                             color: Colors.black,
-                          ),Container(
+                          ),
+                          Container(
                             height: 50,
                             width: 100,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
-                                border: Border.all(
-                                    color: Colors.grey,width: 2
-                                )
-                            ),
+                                border:
+                                    Border.all(color: Colors.grey, width: 2)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.add,size: 20,),
-                                SizedBox(width: 5,),
-                                Text('ADD',style: TextStyle(fontWeight: FontWeight.bold))
-                              ],),
+                                Icon(
+                                  Icons.add,
+                                  size: 20,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text('ADD',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold))
+                              ],
+                            ),
                           )
                         ],
                       ),
-
               )),
-
             ],
           ),
         ),
-        isBool==false ?Container():Divider(color: Colors.grey,height: 2,
-        thickness: 1,)
+        isBool == false
+            ? Container()
+            : Divider(
+                color: Colors.grey,
+                height: 2,
+                thickness: 1,
+              )
       ],
     );
   }

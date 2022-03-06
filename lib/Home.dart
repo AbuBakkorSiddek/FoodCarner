@@ -17,7 +17,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   late ProductProvider productProvider;
 
   Widget listTile(
@@ -37,21 +36,20 @@ class _HomeState extends State<Home> {
     );
   }
 
-
   @override
   void initState() {
-
-   productProvider=Provider.of(context,listen: false);
+    productProvider = Provider.of(context, listen: false);
     productProvider.fatchHerbusProductData();
+    productProvider.fatchFruitssProductData();
+    productProvider.fatchVegitabelProductData();
+    productProvider.fatchOilProductData();
 
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-
-    productProvider=Provider.of(context);
+    productProvider = Provider.of(context);
 
     return Scaffold(
       drawer: Drawer(
@@ -161,7 +159,7 @@ class _HomeState extends State<Home> {
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        '01640382039 :',
+                        '01640382039 ',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       )
@@ -204,7 +202,7 @@ class _HomeState extends State<Home> {
             child: IconButton(
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Search()));
+                    context, MaterialPageRoute(builder: (context) => Search(search: [],)));
               },
               color: Colors.black,
               icon: Icon(
@@ -280,12 +278,22 @@ class _HomeState extends State<Home> {
                 'Herbs Seasoning',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text(
-                'view all',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Search(
+                                search: productProvider.getHerbsProductDetailsList,
+                              )));
+                },
+                child: Text(
+                  'view all',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ]),
             SizedBox(
@@ -294,34 +302,29 @@ class _HomeState extends State<Home> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-
                 children: productProvider.getHerbsProductDetailsList
-                    .map(
-                        (herbsProductDetails){
-                          return   singelProduct(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ProductDetails(
-                                        productText: herbsProductDetails.productName,
-                                        productImage: herbsProductDetails.productImage,
-                                        productPrice: herbsProductDetails.productPrice ,
-                                      )));
-                            },
-                            productImage:
-                            herbsProductDetails.productImage ,
-                            productText: herbsProductDetails.productName,
-                            productPrice: herbsProductDetails.productPrice ,
-                          );
-
-                }
-                ).toList(),
-
+                    .map((herbsProductDetails) {
+                  return singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                    productText:
+                                        herbsProductDetails.productName,
+                                    productImage:
+                                        herbsProductDetails.productImage,
+                                    productPrice:
+                                        herbsProductDetails.productPrice,
+                                  )));
+                    },
+                    productImage: herbsProductDetails.productImage,
+                    productText: herbsProductDetails.productName,
+                    productPrice: herbsProductDetails.productPrice,
+                  );
+                }).toList(),
               ),
             ),
-
-
 
             // 'Fresh Fruits',
 
@@ -333,16 +336,52 @@ class _HomeState extends State<Home> {
                 'Fresh Fruits',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text(
-                'view all',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Search(
+                            search: productProvider.getFruitsProductDetailsList,
+                          )));
+                },
+                child: Text(
+                  'view all',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ]),
             SizedBox(
               height: 5,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: productProvider.getFruitsProductDetailsList
+                    .map((fruitsProductDetails) {
+                  return singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                    productText:
+                                        fruitsProductDetails.productName,
+                                    productImage:
+                                        fruitsProductDetails.productImage,
+                                    productPrice:
+                                        fruitsProductDetails.productPrice,
+                                  )));
+                    },
+                    productImage: fruitsProductDetails.productImage,
+                    productText: fruitsProductDetails.productName,
+                    productPrice: fruitsProductDetails.productPrice,
+                  );
+                }).toList(),
+              ),
             ),
 
             // 'Vegitabel',
@@ -352,31 +391,102 @@ class _HomeState extends State<Home> {
                 'Vegitabel',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text(
-                'view all',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Search(
+                            search: productProvider.getVegitabelProductDetailsList,
+                          )));
+                },
+                child: Text(
+                  'view all',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ]),
 
-            // 'Oil',
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: productProvider.getVegitabelProductDetailsList
+                    .map((vegitabelProductDetails) {
+                  return singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                    productText:
+                                        vegitabelProductDetails.productName,
+                                    productImage:
+                                        vegitabelProductDetails.productImage,
+                                    productPrice:
+                                        vegitabelProductDetails.productPrice,
+                                  )));
+                    },
+                    productImage: vegitabelProductDetails.productImage,
+                    productText: vegitabelProductDetails.productName,
+                    productPrice: vegitabelProductDetails.productPrice,
+                  );
+                }).toList(),
+              ),
+            ),
+
+            // 'Cambo Pack',
 
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
                 'Oil',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text(
-                'view all',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Search(
+                            search: productProvider.getOilProductDetailsList,
+                          )));
+                },
+                child: Text(
+                  'view all',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ]),
-
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: productProvider.getOilProductDetailsList
+                    .map((oilProductDetails) {
+                  return singelProduct(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                    productText: oilProductDetails.productName,
+                                    productImage:
+                                        oilProductDetails.productImage,
+                                    productPrice:
+                                        oilProductDetails.productPrice,
+                                  )));
+                    },
+                    productImage: oilProductDetails.productImage,
+                    productText: oilProductDetails.productName,
+                    productPrice: oilProductDetails.productPrice,
+                  );
+                }).toList(),
+              ),
+            ),
           ],
         ),
       ),
