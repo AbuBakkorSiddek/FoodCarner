@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodcorner/Providers/cartReviewProvider.dart';
 import 'package:foodcorner/Providers/productProvider.dart';
 import 'package:foodcorner/Providers/userProvider.dart';
 import 'package:foodcorner/color/colors.dart';
@@ -22,11 +23,14 @@ class MyApp extends StatelessWidget {
 
         providers: [
 
-    ChangeNotifierProvider<ProductProvider>(
-    create: (context)=>ProductProvider(),),
+            ChangeNotifierProvider<ProductProvider>(
+            create: (context)=>ProductProvider(),),
 
-    ChangeNotifierProvider<UserProvider>(
-    create: (context)=>UserProvider(),),
+            ChangeNotifierProvider<UserProvider>(
+            create: (context)=>UserProvider(),),
+
+            ChangeNotifierProvider<ReviewCartProvider>(
+            create: (context)=>ReviewCartProvider(),),
 
         ],
         child: MaterialApp(

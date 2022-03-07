@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:foodcorner/widget/singleProuductCount.dart';
 
 class singelProduct extends StatelessWidget {
 
   final String productText;
   final String productImage;
+  final String productId;
   final int productPrice;
   final Function() onTap;
 
   const singelProduct({
-    Key? key, required this.productText, required this.productImage, required this.onTap, required this.productPrice,
+    Key? key,
+    required this.productText,
+    required this.productImage,
+    required this.onTap,
+    required this.productPrice,
+    required this.productId,
   }) : super(key: key);
 
   @override
@@ -51,7 +58,7 @@ class singelProduct extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                          flex: 2,
+                          flex: 1,
                           child: Container(
                             width: 40,
                             height: 40,
@@ -75,22 +82,14 @@ class singelProduct extends StatelessWidget {
                       SizedBox(
                         width: 5,
                       ),
-                      Expanded(
-                          child: Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey,width: 2),
-                                borderRadius: BorderRadius.circular(10.0)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.remove, color: Colors.amberAccent),
-                                Text('1'),
-                                Icon(Icons.add, color: Colors.amberAccent),
-                              ],
-                            ),
-                          )),
+                      SingProductCount(
+                        productId: productId,
+                        productName:productText,
+                        productImage:productImage ,
+                        productPrice: productPrice,
+
+
+                      ),
                     ],
                   )
                 ],

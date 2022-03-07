@@ -46,14 +46,16 @@ class _SearchState extends State<Search> {
             height: 10,
           ),
           Column(
-            children: widget.search.map((data) {
-              return SingleItem(
-                isBool: false,
-                productName: data.productName,
-                productPrice: data.productPrice,
-                productImage: data.productImage,
-              );
-            }).toList(),
+            // children: widget.search.map((data) {
+            //   return SingleItem(
+            //     isBool: false,
+            //     productName: data.productName,
+            //     productPrice: data.productPrice,
+            //     productImage: data.productImage,
+            //     productId: data.productId,
+            //     productQuantity: data.p,
+            //   );
+            // }).toList(),
           ),
         ],
       ),

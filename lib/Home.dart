@@ -321,6 +321,7 @@ class _HomeState extends State<Home> {
                     productImage: herbsProductDetails.productImage,
                     productText: herbsProductDetails.productName,
                     productPrice: herbsProductDetails.productPrice,
+                    productId: herbsProductDetails.productId,
                   );
                 }).toList(),
               ),
@@ -379,6 +380,7 @@ class _HomeState extends State<Home> {
                     productImage: fruitsProductDetails.productImage,
                     productText: fruitsProductDetails.productName,
                     productPrice: fruitsProductDetails.productPrice,
+                    productId: fruitsProductDetails.productId,
                   );
                 }).toList(),
               ),
@@ -432,6 +434,7 @@ class _HomeState extends State<Home> {
                     productImage: vegitabelProductDetails.productImage,
                     productText: vegitabelProductDetails.productName,
                     productPrice: vegitabelProductDetails.productPrice,
+                    productId: vegitabelProductDetails.productId,
                   );
                 }).toList(),
               ),
@@ -483,6 +486,7 @@ class _HomeState extends State<Home> {
                     productImage: oilProductDetails.productImage,
                     productText: oilProductDetails.productName,
                     productPrice: oilProductDetails.productPrice,
+                    productId: oilProductDetails.productId,
                   );
                 }).toList(),
               ),
