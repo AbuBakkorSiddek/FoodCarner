@@ -24,7 +24,7 @@ class ReviewCart extends StatelessWidget {
         trailing: Container(
           width: 160,
           child: MaterialButton(onPressed: () {  },
-          child: Text('Submet'),
+          child: Text('Subnet'),
           color: primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0)
@@ -34,28 +34,29 @@ class ReviewCart extends StatelessWidget {
       ),
       appBar: AppBar(title: Text('Review Cart',),
       backgroundColor: primaryColor ,),
-      body: ListView.builder(
-        itemCount: reviewCartProvider.getReviewCartDataList.length,
-        itemBuilder: (context,  index) {
-          ReviewCartModel data =
-          reviewCartProvider.getReviewCartDataList[index];
-          return Column(
-           children: [
+      body:  reviewCartProvider.getReviewCartDataList.isEmpty?Center(
+        child:Text('NO DATA'),) : ListView.builder(
+          itemCount: reviewCartProvider.getReviewCartDataList.length,
+          itemBuilder: (context,  index) {
+            ReviewCartModel data =
+            reviewCartProvider.getReviewCartDataList[index];
+            return Column(
+             children: [
 
-             SizedBox(height: 10,),
+               SizedBox(height: 10,),
 
-             SingleItem(isBool: true,
-               productName: data.cartName,
-               productImage: data.cartName,
-               productPrice: data.cartPrice,
-               productId: data.cartId,
-               productQuantity: data.cartQuantity,),
+               SingleItem(isBool: true,
+                 productImage: data.cartImage,
+                 productName: data.cartName,
+                 productPrice: data.cartPrice,
+                 productId: data.cartId,
+                 productQuantity: data.cartQuantity,),
 
-           ],
-          );
-        },
+             ]
+            );
+          },
 
-      ),
+        ),
     );
   }
 }
