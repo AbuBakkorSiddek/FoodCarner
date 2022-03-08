@@ -8,13 +8,61 @@ import 'package:provider/provider.dart';
 
 class ReviewCart extends StatelessWidget {
 
-   ReviewCart({Key?key}) : super(key: key);
+
+
+   late ReviewCartProvider  reviewCartProvider;
+
+
+
+
+
+   showAlertDialog(BuildContext context,ReviewCartModel delete) {
+
+     // set up the buttons
+     Widget cancelButton = TextButton(
+       child: Text("No"),
+       onPressed:  () {
+
+         Navigator.of(context).pop();
+
+       },
+     );
+     Widget continueButton = TextButton(
+       child: Text("Yes"),
+       onPressed:  () {
+
+          reviewCartProvider.reviewCartDelete(delete.cartId);
+         Navigator.of(context).pop();
+
+       },
+     );
+
+     // set up the AlertDialog
+     AlertDialog alert = AlertDialog(
+       title: Text("Cart Product"),
+       content: Text("Are you sure delete on Product?"),
+       actions: [
+         cancelButton,
+         continueButton,
+       ],
+     );
+
+     // show the dialog
+     showDialog(
+       context: context,
+       builder: (BuildContext context) {
+         return alert;
+       },
+     );
+   }
+
+
 
 
 
   @override
   Widget build(BuildContext context) {
-    ReviewCartProvider  reviewCartProvider = Provider.of(context);
+     reviewCartProvider = Provider.of(context);
     reviewCartProvider.getReviewCartData();
     return Scaffold(
       bottomNavigationBar: ListTile(
@@ -50,7 +98,12 @@ class ReviewCart extends StatelessWidget {
                  productName: data.cartName,
                  productPrice: data.cartPrice,
                  productId: data.cartId,
-                 productQuantity: data.cartQuantity,),
+                 productQuantity: data.cartQuantity,
+                 onDelete: () {
+
+                   showAlertDialog(context,data) ;
+
+                 },),
 
              ]
             );

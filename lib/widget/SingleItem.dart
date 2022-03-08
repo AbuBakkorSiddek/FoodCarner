@@ -6,6 +6,7 @@ class SingleItem extends StatelessWidget {
   final String productId;
   final int productQuantity;
   final int productPrice;
+  Function() onDelete;
   bool isBool = false;
   SingleItem({
     Key? key,
@@ -15,6 +16,7 @@ class SingleItem extends StatelessWidget {
     required this.productPrice,
     required this.productId,
     required this.productQuantity,
+    required this.onDelete,
   }) : super(key: key);
 
   @override
@@ -113,14 +115,18 @@ class SingleItem extends StatelessWidget {
                         ),
                       )
                     : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.delete,
-                            size: 30,
-                            color: Colors.black,
+                          InkWell(
+                            onTap:onDelete,
+                            child: Icon(
+                              Icons.delete,
+                              size: 30,
+                              color: Colors.black,
+                            ),
                           ),
                           Container(
-                            height: 50,
+                            height: 40,
                             width: 100,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
@@ -130,15 +136,20 @@ class SingleItem extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.add,
+                                  Icons.remove,
                                   size: 20,
                                 ),
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Text('ADD',
+                                Text('1',
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold))
+                                        TextStyle(fontWeight: FontWeight.bold)),
+
+                                Icon(
+                                  Icons.add,
+                                  size: 20,
+                                )
                               ],
                             ),
                           )
