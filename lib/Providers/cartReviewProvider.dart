@@ -17,7 +17,7 @@ class ReviewCartProvider with ChangeNotifier {
     FirebaseFirestore.instance
         .collection("ReviewCart")
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .collection("YourReviewCart")
+        .collection("CustomerReviewCart")
         .doc(cartId)
         .set(
       {
@@ -98,7 +98,7 @@ class ReviewCartProvider with ChangeNotifier {
     FirebaseFirestore.instance
         .collection("ReviewCart")
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .collection("YourReviewCart")
+        .collection("CustomerReviewCart")
         .doc(cartId)
         .delete();
     notifyListeners();

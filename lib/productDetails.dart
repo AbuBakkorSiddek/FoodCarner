@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:foodcorner/Providers/WishListProvider.dart';
 import 'package:foodcorner/color/colors.dart';
+import 'package:provider/provider.dart';
 
 enum SinginCharacter { fill, outline }
 
 class ProductDetails extends StatefulWidget {
 
-  final String productText;
+  final String productId;
+  final String productName;
   final String productImage;
   final int productPrice;
 
 
-  ProductDetails({Key? key, required this.productText, required this.productImage, required this.productPrice}) : super(key: key);
+
+
+  ProductDetails({Key? key,
+    required this.productName,
+    required this.productImage,
+    required this.productPrice,
+    required this.productId,})
+      :super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -19,8 +29,13 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   SinginCharacter _character = SinginCharacter.fill;
 
+  bool wishListBoll=false;
+
   @override
   Widget build(BuildContext context) {
+
+    WishListProvider wishListProvider=Provider.of(context);
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: textColor),
@@ -37,6 +52,26 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: InkWell(
               onTap: () {
                 //print('called on tap');
+
+                setState(() {
+
+                  wishListBoll=!wishListBoll;
+
+                });
+
+                if(wishListBoll==true){
+
+                  wishListProvider.addWishListData(
+                      wishListId: widget.productId,
+                      wishListName: widget.productName,
+                      wishListImage: widget.productImage,
+                      wishListPrice: widget.productPrice,
+                      wishListQuantity: 2
+                  );
+
+                }
+
+
               },
               child: SizedBox(
                 height: kToolbarHeight,
@@ -45,7 +80,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.favorite_border_outlined),
+                    wishListBoll==false?Icon(Icons.favorite_border_outlined):Icon(Icons.favorite,color: Colors.green,),
                       SizedBox(
                         width: 5,
                       ),
@@ -109,7 +144,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.productText,
+                          widget.productName,
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 25),
                         ),

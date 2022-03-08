@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodcorner/Providers/WishListProvider.dart';
 import 'package:foodcorner/Providers/cartReviewProvider.dart';
 import 'package:foodcorner/Providers/productProvider.dart';
 import 'package:foodcorner/Providers/userProvider.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
 
             ChangeNotifierProvider<ReviewCartProvider>(
             create: (context)=>ReviewCartProvider(),),
+
+            ChangeNotifierProvider<WishListProvider>(
+            create: (context)=>WishListProvider(),),
 
         ],
         child: MaterialApp(

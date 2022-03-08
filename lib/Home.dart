@@ -310,12 +310,15 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText:
+                                    productName:
                                         herbsProductDetails.productName,
                                     productImage:
                                         herbsProductDetails.productImage,
                                     productPrice:
                                         herbsProductDetails.productPrice,
+                                   productId:
+                                       herbsProductDetails.productId,
+
                                   )));
                     },
                     productImage: herbsProductDetails.productImage,
@@ -369,12 +372,14 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText:
+                                    productName:
                                         fruitsProductDetails.productName,
                                     productImage:
                                         fruitsProductDetails.productImage,
                                     productPrice:
                                         fruitsProductDetails.productPrice,
+                                productId:
+                                        fruitsProductDetails.productId,
                                   )));
                     },
                     productImage: fruitsProductDetails.productImage,
@@ -423,12 +428,13 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText:
+                                    productName:
                                         vegitabelProductDetails.productName,
                                     productImage:
                                         vegitabelProductDetails.productImage,
                                     productPrice:
                                         vegitabelProductDetails.productPrice,
+                                productId:  vegitabelProductDetails.productId,
                                   )));
                     },
                     productImage: vegitabelProductDetails.productImage,
@@ -476,11 +482,12 @@ class _HomeState extends State<Home> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetails(
-                                    productText: oilProductDetails.productName,
+                                    productName: oilProductDetails.productName,
                                     productImage:
                                         oilProductDetails.productImage,
                                     productPrice:
                                         oilProductDetails.productPrice,
+                                   productId: oilProductDetails.productId,
                                   )));
                     },
                     productImage: oilProductDetails.productImage,
