@@ -59,23 +59,72 @@ class singelProduct extends StatelessWidget {
                     children: [
                       Expanded(
                           flex: 1,
-                          child: Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey,width: 2),
-                                borderRadius: BorderRadius.circular(10.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 2.5),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('50 Gram'),
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.amberAccent,
-                                  )
-                                ],
+                          child: InkWell(
+                            onTap: (){
+                              showModalBottomSheet(
+                                 context: context,
+                                builder: (BuildContext context) {
+                                   return Column(
+                                     mainAxisSize: MainAxisSize.min,
+                                     children: [
+
+                                       ListTile(
+                                         leading: Icon(Icons.share),
+                                         title: Text('50 Gram'),
+                                         onTap: (){
+
+                                         },
+                                       ),
+                                       ListTile(
+                                         leading: Icon(Icons.copy),
+                                         title: Text('250 Gram'),
+                                         onTap: (){
+
+                                         },
+                                       ),
+                                       ListTile(
+                                         leading: Icon(Icons.edit),
+                                         title: Text('500 Gram'),
+                                         onTap: (){
+
+                                         },
+                                       ),
+
+
+                                       ListTile(
+                                         leading: Icon(Icons.edit),
+                                         title: Text('1 Kg'),
+                                         onTap: (){
+
+                                         },
+                                       ),
+
+                                     ],
+                                   );
+                                },
+
+
+
+                              );
+                            },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey,width: 2),
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 2.5),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('50 Gram'),
+                                    Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.amberAccent,
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           )),

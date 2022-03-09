@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:foodcorner/Providers/WishListProvider.dart';
 import 'package:foodcorner/color/colors.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 enum SinginCharacter { fill, outline }
 
@@ -31,10 +33,36 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   bool wishListBoll=false;
 
+  getwishListBool(){
+
+    FirebaseFirestore.instance
+        .collection("WistList")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("CustomerWistList")
+        .doc(widget.productId)
+        .get()
+        .then((value) => {
+
+    if(this.mounted){
+
+        setState(() {
+
+      wishListBoll=value.get("WistList");
+
+    })
+
+  }
+
+    });
+    
+  }
+
   @override
   Widget build(BuildContext context) {
 
     WishListProvider wishListProvider=Provider.of(context);
+
+    getwishListBool();
 
     return Scaffold(
       appBar: AppBar(
@@ -69,6 +97,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                       wishListQuantity: 2
                   );
 
+                 }else{
+                  wishListProvider.deleteWishtList(widget.productId);
                 }
 
 

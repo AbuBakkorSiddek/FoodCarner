@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SingleItem extends StatelessWidget {
@@ -8,9 +9,11 @@ class SingleItem extends StatelessWidget {
   final int productPrice;
   Function() onDelete;
   bool isBool = false;
+  bool wishListBool = false;
   SingleItem({
     Key? key,
     required this.isBool,
+    required this.wishListBool,
     required this.productImage,
     required this.productName,
     required this.productPrice,
@@ -31,8 +34,7 @@ class SingleItem extends StatelessWidget {
                   child: Container(
                 height: 100,
                 child: Center(
-                  child: Image.network(
-                     productImage),
+                  child: Image.network(productImage),
                 ),
               )),
               Expanded(
@@ -115,17 +117,17 @@ class SingleItem extends StatelessWidget {
                         ),
                       )
                     : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
-                            onTap:onDelete,
+                            onTap: onDelete,
                             child: Icon(
                               Icons.delete,
                               size: 30,
                               color: Colors.black,
                             ),
                           ),
-                          Container(
+                          wishListBool ==false?Container(
                             height: 40,
                             width: 100,
                             decoration: BoxDecoration(
@@ -145,14 +147,13 @@ class SingleItem extends StatelessWidget {
                                 Text('1',
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold)),
-
                                 Icon(
                                   Icons.add,
                                   size: 20,
                                 )
                               ],
                             ),
-                          )
+                          ) :Container()
                         ],
                       ),
               )),

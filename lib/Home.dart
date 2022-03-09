@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodcorner/Providers/productProvider.dart';
 import 'package:foodcorner/Review/ReviewCart.dart';
 import 'package:foodcorner/Search/Search.dart';
+import 'package:foodcorner/WishList/wishList.dart';
 import 'package:foodcorner/color/colors.dart';
 import 'package:foodcorner/productDetails.dart';
 import 'package:foodcorner/widget/singleProduct.dart';
@@ -132,7 +133,12 @@ class _HomeState extends State<Home> {
             listTile(
                 iconData: Icons.favorite_border_outlined,
                 titletext: 'WishList',
-                onTap: () {}),
+                onTap: () {
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => myWishList()));
+
+                }),
             listTile(
                 iconData: Icons.copy_outlined,
                 titletext: 'Raise a Complaint',

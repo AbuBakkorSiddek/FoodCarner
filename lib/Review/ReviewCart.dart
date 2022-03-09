@@ -93,7 +93,9 @@ class ReviewCart extends StatelessWidget {
 
                SizedBox(height: 10,),
 
-               SingleItem(isBool: true,
+               SingleItem(
+                 wishListBool : false,
+                 isBool: true,
                  productImage: data.cartImage,
                  productName: data.cartName,
                  productPrice: data.cartPrice,
@@ -103,7 +105,7 @@ class ReviewCart extends StatelessWidget {
 
                    showAlertDialog(context,data) ;
 
-                 },),
+                 }, ),
 
              ]
             );

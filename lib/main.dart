@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider<WishListProvider>(
             create: (context)=>WishListProvider(),),
 
+
         ],
         child: MaterialApp(
 

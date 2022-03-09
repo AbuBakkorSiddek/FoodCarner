@@ -27,6 +27,7 @@ class ProductProvider with ChangeNotifier {
               productName: element.get('productName'),
               productPrice: element.get('productPrice'),
               productId:element.get('productId'),
+              productQuantity: element.get('productQuantity'),
 
           );
       
@@ -65,6 +66,7 @@ class ProductProvider with ChangeNotifier {
             productName: element.get('productName'),
             productPrice: element.get('productPrice'),
             productId:element.get('productId'),
+            productQuantity: element.get('productQuantity'),
 
           );
 
@@ -104,6 +106,7 @@ class ProductProvider with ChangeNotifier {
             productName: element.get('productName'),
             productPrice: element.get('productPrice'),
             productId:element.get('productId'),
+            productQuantity: element.get('productQuantity'),
 
           );
 
@@ -143,6 +146,7 @@ class ProductProvider with ChangeNotifier {
             productName: element.get('productName'),
             productPrice: element.get('productPrice'),
             productId:element.get('productId'),
+            productQuantity: element.get('productQuantity'),
 
           );
 
